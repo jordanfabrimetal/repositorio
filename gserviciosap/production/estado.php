@@ -11,7 +11,6 @@ if(!isset($_SESSION["nombre"])){
 echo '<script>console.log("'.$_SESSION['idSAP'].'");</script>';
 require 'header.php';
 
-
  ?>
         <!-- Contenido -->
         <div class="right_col" role="main">

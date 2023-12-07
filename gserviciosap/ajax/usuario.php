@@ -169,7 +169,7 @@ switch ($_GET["op"]) {
 			header("Location: ../index.php");
 			break;
                     
-                        case 'salirguia':
+            case 'salirguia':
 			session_unset();
 			session_destroy();
 			header("Location: ../production/guia/index.php");
