@@ -45,7 +45,7 @@ require_once "../config/conexionSap.php";
 			return ejecutarConsulta($sql);
 		}
                 
-                public function Rut($iduser){
+        public function Rut($iduser){
 			$sql="SELECT num_documento FROM user WHERE iduser='$iduser'";
 			return ejecutarConsultaSimpleFila($sql);
 		}

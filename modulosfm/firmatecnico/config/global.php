@@ -3,14 +3,16 @@
 //Ip del servidor de BD
 define("DB_HOST","127.0.0.1");
 
+define("DB_PORT","3306");
+
 //Nombre de la Base de datos
 define("DB_NAME","fabrimetalcl_appcontrato");
 
 //Usuario BD
-define("DB_USERNAME","root");
+define("DB_USERNAME","fabrimetalcl_fabri");
 
 //Password Usuario
-define("DB_PASSWORD","");
+define("DB_PASSWORD","k7a7Tg2n");
 
 //Codificacion 
 define("DB_ENCODE","utf8");
@@ -24,7 +26,7 @@ define("PRO_NOMBRE","Fabrimetal");
 /*  Sistema SAP */
 
 //Nombre de la Base de datos
-define("DB_NAME_SAP","CLPRDFABRIMETAL_PRUEBAS");
+define("DB_NAME_SAP","CLPRDFABRIMETAL");
 //define("DB_NAME_SAP","CLTSTFABRIMETAL");
 
 //Usuario BD
