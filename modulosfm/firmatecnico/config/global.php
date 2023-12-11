@@ -9,10 +9,10 @@ define("DB_PORT","3306");
 define("DB_NAME","fabrimetalcl_appcontrato");
 
 //Usuario BD
-define("DB_USERNAME","fabrimetalcl_fabri");
+define("DB_USERNAME","root");
 
 //Password Usuario
-define("DB_PASSWORD","k7a7Tg2n");
+define("DB_PASSWORD","");
 
 //Codificacion 
 define("DB_ENCODE","utf8");
@@ -26,7 +26,7 @@ define("PRO_NOMBRE","Fabrimetal");
 /*  Sistema SAP */
 
 //Nombre de la Base de datos
-define("DB_NAME_SAP","CLPRDFABRIMETAL");
+define("DB_NAME_SAP","CLPRDFABRIMETAL_DESARROLLO");
 //define("DB_NAME_SAP","CLTSTFABRIMETAL");
 
 //Usuario BD

@@ -13,7 +13,7 @@ require_once '../modelos/Encuesta.php';
 require_once '../modelos/ImagenMensual.php';
 require_once '../public/build/lib/PHPMailer/class.phpmailer.php';
 require_once '../public/build/lib/PHPMailer/class.smtp.php';
-include '../public/build/lib/mpdf/mpdf.php';
+//include '../public/build/lib/mpdf/mpdf.php';
 require_once '../public/build/lib/fabrimetal/pdf.php';
 include '../public/build/lib/fabrimetal/functions.php';
 require_once "../config/conexionSap.php";
@@ -1620,16 +1620,25 @@ switch ($_GET["op"]) {
     break;
     
     case 'verificarsap':
-        $iduser = $_SESSION['iduser'];
+        $iduser = $_SESSION['iduser'];        
         $servicioini = $servicio->verificarservicioSAP();
+
         if ($servicioini > 0) {
             $rspta = $servicio->datosserviciosap();
+
+            
             $conteo = count($rspta['value'][0]['ServiceCallActivities']);
             $codeLastActivServCall = $rspta['value'][0]['ServiceCallActivities'][$conteo-1]['ActivityCode'];
 
-
             //consulto la informacion de la llamada de servicio por el codigo de la ultima actividad
             $datosactividad = $servicio->Actividad($codeLastActivServCall);
+
+            var_dump($codeLastActivServCall);
+            var_dump($datosactividad);
+            die();die;
+
+
+
             $rsptaservicio = $encuesta->numInformeEquipo(((strtolower($datosactividad['value'][0]['artTipoEquipo']) == 'escalera') ? 4 : 3), $rspta['value'][0]['InternalSerialNum'], $rspta['value'][0]['ServiceCallID']);
             $ninformes = $rsptaservicio['ninformes'];
             $rsptaservicio = $encuesta->ultimoInforme(((strtolower($datosactividad['value'][0]['artTipoEquipo']) == 'escalera') ? 4 : 3), $rspta['value'][0]['InternalSerialNum'], $rspta['value'][0]['ServiceCallID']);

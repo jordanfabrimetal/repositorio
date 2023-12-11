@@ -444,6 +444,10 @@ require_once "../config/conexionSap.php";
         public function Actividad($actividadID){
         	$sql = "sml.svc/LISTA_ACTIVIDADES?\$filter=actCodigo eq ".$actividadID;
 		    return json_decode(Query($sql), true);
+
+			var_dump($sql);
+            die();die;
+
         }
 
         public function SelectCliente(){

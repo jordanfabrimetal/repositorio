@@ -24,7 +24,7 @@ define("PRO_NOMBRE","Fabrimetal");
 /*  Sistema SAP */
 
 //Nombre de la Base de datos
-define("DB_NAME_SAP","CLPRDFABRIMETAL_PRUEBAS");
+define("DB_NAME_SAP","CLPRDFABRIMETAL_DESARROLLO");
 //define("DB_NAME_SAP","CLTSTFABRIMETAL");
 
 //Usuario BD

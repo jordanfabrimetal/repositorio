@@ -98,7 +98,11 @@ if (strlen(session_id()) < 1) {
                         <!-- menu profile quick info -->
                         <div class="profile clearfix">
                             <div class="profile_pic">
-                                <img src="../files/usuarios/<?php echo $_SESSION['imagen'] ?>" alt="..." class="img-circle profile_img">
+                                <?php if($_SESSION['imagen']):?>
+                                    <img src="../files/no-img.png" alt="..." class="img-circle profile_img">
+                                <?php else:?>
+                                    <img src="../files/no-img.png" alt="..." class="img-circle profile_img">
+                                <?php endif;?>
                             </div>
                             <div class="profile_info">
                                 <span>Bienvenido,</span>
@@ -106,9 +110,7 @@ if (strlen(session_id()) < 1) {
                             </div>
                         </div>
                         <!-- /menu profile quick info -->
-
                         <br />
-
                         <!-- sidebar menu -->
                         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                             <div class="menu_section">
