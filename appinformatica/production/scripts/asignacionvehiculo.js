@@ -320,16 +320,16 @@ function pdf(idasigvehi, tipo) {
         doc.setFontSize(fontSizes.NormalFontSize);
 
         doc.setFontType('bold');
-        doc.text(startX, startY += 15 + company_logo.h, "Cod Documento: ");
+        startY += lineSpacing.DobleSpacing;
         doc.setFontType('normal');
-        doc.text(startX + 85, startY, inicodigo + data.idasigvehi);
+        startY += lineSpacing.DobleSpacing;
         doc.setFontType('bold');
         doc.myText(titulo, {align: "center"}, startX, startY += lineSpacing.DobleSpacing);
 
         doc.setFontType('bold');
         doc.text(startX, startY += lineSpacing.DobleSpacing, "Fecha: ");
         doc.setFontType('normal');
-        doc.text(startX + 35, startY, data.dia + ' de ' + Mes[data.mes - 1] + ' del ' + data.año);
+        doc.text(startX+35, startY, data.dia+' de '+Mes[data.mes-1]+' del '+data.año+' a las '+data.hora);
 
         doc.setFontType('bold');
         doc.text(startX, startY += lineSpacing.NormalSpacing, "Nombre del funcionario: ");

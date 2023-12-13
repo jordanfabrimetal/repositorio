@@ -421,8 +421,7 @@ function devolucion(idasigtarjeta) {
         doc.setFontType('bold');
         doc.text(startX, startY += lineSpacing.DobleSpacing, "Fecha: ");
         doc.setFontType('normal');
-        doc.text(startX + 35, startY, data.dia + ' de ' + Mes[data.mes - 1] + ' del ' + data.año);
-
+        doc.text(startX+35, startY, data.dia+' de '+Mes[data.mes-1]+' del '+data.año+' a las '+data.hora);
 
         doc.setFontType('normal');
         lines = doc.splitTextToSize(ParrafoJSON.Inicio, 540);

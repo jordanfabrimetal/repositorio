@@ -56,7 +56,7 @@ require "../config/conexion.php";
 		}
                 
                 public function devpdf($idasigtarjeta){
-			$sql="SELECT a.idasigtarjeta, DATE(a.created_time) AS entrega, DAY(sysdate()) AS dia, MONTH(sysdate()) AS mes, YEAR(sysdate()) AS año, DATE(a.closed_time) AS devolucion, e.nombre, e.apellido, e.num_documento, a.acta, a.devolucion, t.codigo, n.nombre AS nivel, e.direccion, c.nombre AS cargo, x.comuna_nombre AS comuna FROM asigtarjeta a INNER JOIN tarjeta t ON a.idtarjeta=t.idtarjeta INNER JOIN nivel n ON t.idnivel = n.idnivel INNER JOIN empleado e ON a.idempleado = e.idempleado INNER JOIN cargos c ON e.idcargo = c.idcargos INNER JOIN comunas x ON e.idcomunas = x.comuna_id WHERE a.idasigtarjeta = '$idasigtarjeta'";
+			$sql="SELECT a.idasigtarjeta, DATE(a.created_time) AS entrega, DAY(sysdate()) AS dia, MONTH(sysdate()) AS mes, YEAR(sysdate()) AS año,  TIME_FORMAT(CURRENT_TIME(), '%H:%i:%s') AS hora, DATE(a.closed_time) AS devolucion, e.nombre, e.apellido, e.num_documento, a.acta, a.devolucion, t.codigo, n.nombre AS nivel, e.direccion, c.nombre AS cargo, x.comuna_nombre AS comuna FROM asigtarjeta a INNER JOIN tarjeta t ON a.idtarjeta=t.idtarjeta INNER JOIN nivel n ON t.idnivel = n.idnivel INNER JOIN empleado e ON a.idempleado = e.idempleado INNER JOIN cargos c ON e.idcargo = c.idcargos INNER JOIN comunas x ON e.idcomunas = x.comuna_id WHERE a.idasigtarjeta = '$idasigtarjeta'";
 			return ejecutarConsultaSimpleFila($sql);
 		}
                 
