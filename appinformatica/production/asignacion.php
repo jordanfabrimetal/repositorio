@@ -128,8 +128,6 @@ require 'footer.php';
 <script src="../public/build/js/jspdf.min.js"></script>
 <script src="../public/build/js/jspdf.plugin.autotable.js"></script>
 <script src="../public/build/js/jsPDFcenter.js"></script>
-
-
 <script type="text/javascript" src="scripts/asignacion.js"></script>
 <?php 
 }

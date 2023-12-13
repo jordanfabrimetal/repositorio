@@ -728,9 +728,9 @@ function devolucion(idasignacion){
                 doc.setFontSize(fontSizes.NormalFontSize);
 
                 doc.setFontType('bold');
-                doc.text(startX, startY+=15+company_logo.h, "Cod Documento: ");
+                startY += lineSpacing.DobleSpacing;
                 doc.setFontType('normal');
-                doc.text(startX+85, startY, "FF-SS-AC-"+data.idasignacion);
+                startY += lineSpacing.DobleSpacing;
                 doc.setFontType('bold');
                 doc.setFontSize(fontSizes.TitleFontSize);
                 doc.myText("ACTA DE DEVOLUCION DE TELÉFONO MOVIL",{align: "center"},startX, startY+=lineSpacing.DobleSpacing);
@@ -739,7 +739,7 @@ function devolucion(idasignacion){
                 doc.setFontType('bold');
                 doc.text(startX, startY+=lineSpacing.DobleSpacing, "Fecha: ");
                 doc.setFontType('normal');
-                doc.text(startX+35, startY, data.dia+' de '+Mes[data.mes-1]+' del '+data.año);
+                doc.text(startX+35, startY, data.dia+' de '+Mes[data.mes-1]+' del '+data.año+' '+data.hora);
 
 
                 doc.setFontType('normal');

@@ -65,7 +65,7 @@ require "../config/conexion.php";
 		}
 		
                 public function contratopdf($idasignacion){
-			$sql="SELECT a.idasignacion, DAY(CURRENT_TIMESTAMP) AS dia, MONTH(CURRENT_TIMESTAMP) AS mes, YEAR(CURRENT_TIMESTAMP) AS año, d.marca, d.precio, d.color, d.tipo, d.nombre as equipo, e.imei, c.numero, o.nombre as operador, c.serial, w.nombre, w.apellido, w.tipo_documento, w.num_documento, w.direccion, p.comuna_nombre AS comuna, f.nombre as cargo, e.estado FROM asignacion a INNER JOIN equipo e ON a.idequipo = e.idequipo INNER JOIN detalle d ON e.iddetalle=d.iddetalle INNER JOIN empleado w ON a.idempleado = w.idempleado INNER JOIN cargos f ON w.idcargo=f.idcargos INNER JOIN chip c ON a.idchip = c.idchip INNER JOIN operador o on c.idoperador= o.idoperador INNER JOIN comunas p ON w.idcomunas = p.comuna_id WHERE a.idasignacion='$idasignacion'";
+			$sql="SELECT a.idasignacion, DAY(CURRENT_TIMESTAMP) AS dia, MONTH(CURRENT_TIMESTAMP) AS mes, YEAR(CURRENT_TIMESTAMP) AS año,  TIME_FORMAT(CURRENT_TIME(), '%H:%i:%s') AS hora, d.marca, d.precio, d.color, d.tipo, d.nombre as equipo, e.imei, c.numero, o.nombre as operador, c.serial, w.nombre, w.apellido, w.tipo_documento, w.num_documento, w.direccion, p.comuna_nombre AS comuna, f.nombre as cargo, e.estado FROM asignacion a INNER JOIN equipo e ON a.idequipo = e.idequipo INNER JOIN detalle d ON e.iddetalle=d.iddetalle INNER JOIN empleado w ON a.idempleado = w.idempleado INNER JOIN cargos f ON w.idcargo=f.idcargos INNER JOIN chip c ON a.idchip = c.idchip INNER JOIN operador o on c.idoperador= o.idoperador INNER JOIN comunas p ON w.idcomunas = p.comuna_id WHERE a.idasignacion='$idasignacion'";
 			return ejecutarConsultaSimpleFila($sql);
 		}
                 
