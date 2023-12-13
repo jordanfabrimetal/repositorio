@@ -561,10 +561,9 @@ function devolucion(idasigcompu) {
                         doc.setFontSize(fontSizes.NormalFontSize);
 
                         doc.setFontType('bold');
-                        doc.text(startX, startY += 15 + company_logo.h, "Cod Documento: ");
+                        startY += lineSpacing.DobleSpacing;
                         doc.setFontType('normal');
-                        doc.text(startX + 85, startY, "FF-SS-AC-CO-" + data.idasigcompu);
-                        //doc.text(startX + 85, startY, "FF-SS-AC-TR-" + data.idasigcompu);
+                        startY += lineSpacing.DobleSpacing;
                         doc.setFontType('bold');
                         doc.setFontSize(fontSizes.TitleFontSize);
                         doc.myText("ACTA DE DEVOLUCION DE COMPUTADOR", {align: "center"}, startX, startY += lineSpacing.DobleSpacing);
@@ -573,7 +572,7 @@ function devolucion(idasigcompu) {
                         doc.setFontType('bold');
                         doc.text(startX, startY += lineSpacing.DobleSpacing, "Fecha: ");
                         doc.setFontType('normal');
-                        doc.text(startX + 35, startY, data.dia + ' de ' + Mes[data.mes - 1] + ' del ' + data.año);
+                        doc.text(startX+35, startY, data.dia+' de '+Mes[data.mes-1]+' del '+data.año+' a las '+data.hora);
 
 
                         doc.setFontType('normal');

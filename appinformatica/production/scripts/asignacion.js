@@ -739,7 +739,7 @@ function devolucion(idasignacion){
                 doc.setFontType('bold');
                 doc.text(startX, startY+=lineSpacing.DobleSpacing, "Fecha: ");
                 doc.setFontType('normal');
-                doc.text(startX+35, startY, data.dia+' de '+Mes[data.mes-1]+' del '+data.año+' '+data.hora);
+                doc.text(startX+35, startY, data.dia+' de '+Mes[data.mes-1]+' del '+data.año+' a las '+data.hora);
 
 
                 doc.setFontType('normal');
