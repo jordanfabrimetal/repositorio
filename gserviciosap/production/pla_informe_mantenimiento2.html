@@ -588,10 +588,24 @@ tr:nth-child(even) td {
 											<!-- END BLOCK : bloques -->
 
 											<div class="row">
+												<div class="col-md-12 col-sm-12 col-xs-12">
+													<div class="checkbox" id="certifica">
+														<label for="">
+															<input type="checkbox" value="Marcar Todos" id="marcarTodos">
+															<p class="text-danger">He leido toda la encuesta, por lo cual puedo marcar todos</p>
+														</label>
+													</div>
+												</div>
+											</div>
+
+									
+											<div class="row">
 												<div class="col-md-12 col-sm-12 col-xs-12 title">Observaciones</div>
 												<div class="col-md-12 col-sm-12 col-xs-12 title"><textarea name="observaciones" id="observaciones" class="form-control" rows="4" style="width: 100%"></textarea></div>
 												<div class="col-md-12 col-sm-12 col-xs-12 title">&nbsp;</div>
 											</div>
+
+
 
 											<div class="row">
 												<div class="col-md-12 col-sm-12 col-xs-12">
@@ -603,6 +617,8 @@ tr:nth-child(even) td {
 													</div>
 												</div>
 											</div>
+
+
 											<hr>
 											<div class="row">
 												<div class="col-md-12 col-sm-12 col-xs-12">
@@ -1312,5 +1328,42 @@ tr:nth-child(even) td {
 		}
 
 	}
+</script>
+
+<!-- Marcar todos los Checkbox simultaneamente-->
+
+<script>
+	document.getElementById('marcarTodos').addEventListener('change', function () {
+		// Obtener todos los checkboxes con la clase 'elemento'
+		var checkboxes = document.querySelectorAll('.elemento');
+
+		// Iterar sobre todos los checkboxes y marcarlos o desmarcarlos según el estado del checkbox principal
+
+		bootbox.confirm({
+			title: 'Mensaje de recordatorio',
+            message: 'He leido cada uno de las encuesta?',
+            buttons: {
+                confirm: {
+					label: '<i class="fa fa-check"></i> Confirm',
+               	 	className: 'btn-success'
+                },
+                cancel: {
+					label: '<i class="fa fa-times"></i> Cancel',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                
+				if(result){
+					checkboxes.forEach(function (checkbox) {
+						checkbox.checked = document.getElementById('marcarTodos').checked;
+					});
+				}else{
+					
+				}
+            }
+     	});
+
+	});
 </script>
 

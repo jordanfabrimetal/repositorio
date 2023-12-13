@@ -1633,9 +1633,9 @@ switch ($_GET["op"]) {
             //consulto la informacion de la llamada de servicio por el codigo de la ultima actividad
             $datosactividad = $servicio->Actividad($codeLastActivServCall);
 
-            var_dump($codeLastActivServCall);
-            var_dump($datosactividad);
-            die();die;
+            //var_dump($codeLastActivServCall);
+            //var_dump($datosactividad);
+            //die();die;
 
 
 
@@ -1643,6 +1643,7 @@ switch ($_GET["op"]) {
             $ninformes = $rsptaservicio['ninformes'];
             $rsptaservicio = $encuesta->ultimoInforme(((strtolower($datosactividad['value'][0]['artTipoEquipo']) == 'escalera') ? 4 : 3), $rspta['value'][0]['InternalSerialNum'], $rspta['value'][0]['ServiceCallID']);
             $ultimoinforme = $rsptaservicio['infv_id'];
+
             /*$swBtnInforme = ((strtolower($reg->tiposer) != 'mantencion') ? 'disabled' : '');
             $swBtnFin = ((strtolower($reg->tiposer) != 'mantencion' || $ninformes) ? '' : '');*/
             $swBtnInforme = (($rspta['value'][0]['CallType'] != '1') ? 'disabled' : '');
@@ -3599,10 +3600,10 @@ switch ($_GET["op"]) {
                         {
                             $t->newBlock('preguntas');
                             if($item2['tipp_id'] == 1){
-                                $t->assign('pregunta', '<div class="col-md-6 col-sm-12 col-xs-12"><div class="checkbox"><label><input type="checkbox" name="preg['.$item2['preg_id'].']" value="SI">'.$item2['preg_nombre'].'</label></div></div>'.' ');
+                                $t->assign('pregunta', '<div class="col-md-6 col-sm-12 col-xs-12"><div class="checkbox"><label><input type="checkbox" name="preg['.$item2['preg_id'].']" value="SI"  class="elemento">'.$item2['preg_nombre'].'</label></div></div>'.' ');
                             }elseif($item2['tipp_id'] == 2){
                                 
-                                $t->assign('pregunta', '<div style="float:left !important;z-index:1;" class="col-md-6 col-sm-3 col-xs-3"><input type="radio" value="Si" id="preg['.$item2['preg_id'].']-si" name="preg['.$item2['preg_id'].']"><label style="padding-left:5px;padding-right: 5px;" for="preg['.$item2['preg_id'].']-si">Si</label><input type="radio" for="preg['.$item2['preg_id'].']-no" value="No" name="preg['.$item2['preg_id'].']"><label for="preg['.$item2['preg_id'].']-no" style="padding-left:5px;">No</label></div><div style="float:left !important;" class="col-sm-9 col-xs-9"><span>'.$item2['preg_nombre'].'</span></div>'.' ');
+                                $t->assign('pregunta', '<div style="float:left !important;z-index:1;" class="col-md-6 col-sm-3 col-xs-3" ><input type="radio" value="Si" id="preg['.$item2['preg_id'].']-si" name="preg['.$item2['preg_id'].']" class="elemento"><label style="padding-left:5px;padding-right: 5px;" for="preg['.$item2['preg_id'].']-si">Si</label><input type="radio" for="preg['.$item2['preg_id'].']-no" value="No" name="preg['.$item2['preg_id'].']"><label for="preg['.$item2['preg_id'].']-no" style="padding-left:5px;">No</label></div><div style="float:left !important;" class="col-sm-9 col-xs-9"><span>'.$item2['preg_nombre'].'</span></div>'.' ');
                             }
 
                             if ($item2['preg_comentario'])
