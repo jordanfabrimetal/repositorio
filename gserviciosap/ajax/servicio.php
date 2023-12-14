@@ -13,7 +13,7 @@ require_once '../modelos/Encuesta.php';
 require_once '../modelos/ImagenMensual.php';
 require_once '../public/build/lib/PHPMailer/class.phpmailer.php';
 require_once '../public/build/lib/PHPMailer/class.smtp.php';
-//include '../public/build/lib/mpdf/mpdf.php';
+include '../public/build/lib/mpdf/mpdf.php';
 require_once '../public/build/lib/fabrimetal/pdf.php';
 include '../public/build/lib/fabrimetal/functions.php';
 require_once "../config/conexionSap.php";
@@ -1635,14 +1635,29 @@ switch ($_GET["op"]) {
 
             //var_dump($codeLastActivServCall);
             //var_dump($datosactividad);
-            //die();die;
+            //die;
 
 
 
             $rsptaservicio = $encuesta->numInformeEquipo(((strtolower($datosactividad['value'][0]['artTipoEquipo']) == 'escalera') ? 4 : 3), $rspta['value'][0]['InternalSerialNum'], $rspta['value'][0]['ServiceCallID']);
             $ninformes = $rsptaservicio['ninformes'];
+
+
             $rsptaservicio = $encuesta->ultimoInforme(((strtolower($datosactividad['value'][0]['artTipoEquipo']) == 'escalera') ? 4 : 3), $rspta['value'][0]['InternalSerialNum'], $rspta['value'][0]['ServiceCallID']);
             $ultimoinforme = $rsptaservicio['infv_id'];
+
+            var_dump($datosactividad['value'][0]['artTipoEquipo']); 
+            var_dump($rspta['value'][0]['ServiceCallID']);
+            var_dump($rspta['value'][0]['InternalSerialNum']); 
+            var_dump(strtolower($datosactividad['value'][0]['artTipoEquipo'])); 
+            var_dump(strtolower($datosactividad['value'][0]['artTipoEquipo'])); 
+            var_dump($ultimoinforme);
+            var_dump($rsptaservicio);
+
+
+            
+            
+         
 
             /*$swBtnInforme = ((strtolower($reg->tiposer) != 'mantencion') ? 'disabled' : '');
             $swBtnFin = ((strtolower($reg->tiposer) != 'mantencion' || $ninformes) ? '' : '');*/
@@ -2388,7 +2403,7 @@ switch ($_GET["op"]) {
                         </body>
                     </html>
                 ';
-                //echo $bodypdf;die;
+                echo $bodypdf;die;
                 $guiaPDF = new mPDF('c');
                 //$guiaPDF->showImageErrors = true;
                 $guiaPDF->WriteHTML($bodypdf);
