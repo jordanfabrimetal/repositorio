@@ -1060,6 +1060,23 @@ switch ($_GET["op"]) {
                             <img src="../files/firma/' . $resp["filefir"] . '" style="width:100%; max-width:150px;"><br>
                         </td>
                     </tr>
+
+                    <tr class="item" style="display: flex; flex-wrap: wrap; justify-content: center;">
+                    <td colspan="50" style="text-align: center;">
+                    <b style="text-align:left;">PRESUPUESTO </b><br>';
+                        foreach ($imagen_presupuesto as $imagen) {
+                            $bodypdf .= '
+                                <img src="../files/img_presupuesto/' . $imagen . '" style="width:100%; max-width:280px; display: inline-block; margin-bottom: 10px;"><br>';
+                        }
+                        $bodypdf .= '   
+                    </td>   
+                    </tr>
+
+                    <tr class="item">
+                    <td>
+                        <b>DESCRIPCIÓN: </b>'.$_POST["descripcion"].'
+                    </td>
+                    </tr>
                     <br>
                     <tr class="top">
                         <td colspan="2">
@@ -1638,26 +1655,11 @@ switch ($_GET["op"]) {
             //die;
 
 
-
             $rsptaservicio = $encuesta->numInformeEquipo(((strtolower($datosactividad['value'][0]['artTipoEquipo']) == 'escalera') ? 4 : 3), $rspta['value'][0]['InternalSerialNum'], $rspta['value'][0]['ServiceCallID']);
             $ninformes = $rsptaservicio['ninformes'];
 
-
             $rsptaservicio = $encuesta->ultimoInforme(((strtolower($datosactividad['value'][0]['artTipoEquipo']) == 'escalera') ? 4 : 3), $rspta['value'][0]['InternalSerialNum'], $rspta['value'][0]['ServiceCallID']);
             $ultimoinforme = $rsptaservicio['infv_id'];
-
-            var_dump($datosactividad['value'][0]['artTipoEquipo']); 
-            var_dump($rspta['value'][0]['ServiceCallID']);
-            var_dump($rspta['value'][0]['InternalSerialNum']); 
-            var_dump(strtolower($datosactividad['value'][0]['artTipoEquipo'])); 
-            var_dump(strtolower($datosactividad['value'][0]['artTipoEquipo'])); 
-            var_dump($ultimoinforme);
-            var_dump($rsptaservicio);
-
-
-            
-            
-         
 
             /*$swBtnInforme = ((strtolower($reg->tiposer) != 'mantencion') ? 'disabled' : '');
             $swBtnFin = ((strtolower($reg->tiposer) != 'mantencion' || $ninformes) ? '' : '');*/
@@ -1794,7 +1796,9 @@ switch ($_GET["op"]) {
 
         case  'finalizarsap':
             $firma = isset($_POST["firma"]) ? limpiarCadena($_POST["firma"]) : '';
-            
+            $imagen_presupuesto[] = isset($_POST["file01"]) ? limpiarCadena($_POST["file01"]) : "";
+            $imagen_presupuesto[] = isset($_POST["file02"]) ? limpiarCadena($_POST["file02"]) : "";
+            $imagen_presupuesto[] = isset($_POST["file03"]) ? limpiarCadena($_POST["file03"]) : "";
             //echo '<br><br><pre>';print_r($_POST);echo '</pre><br><br><br><br>';die;
             $data = json_encode($_POST);
             //$rspta = $servicio->finalizarActividad($data);
@@ -2081,9 +2085,26 @@ switch ($_GET["op"]) {
                                                     <img src="' . $firma . '" style="width:100%; max-width:150px;"><br>
                                                 </td>
                                             </tr>
+
+                                            <tr class="item" style="display: flex; flex-wrap: wrap; justify-content: center;">
+                                                <td colspan="50" style="text-align: center;">
+                                                <b style="text-align:left;">PRESUPUESTO </b><br>';
+                                                    foreach ($imagen_presupuesto as $imagen) {
+                                                        $bodypdf .= '
+                                                            <img src="../files/img_presupuesto/' . $imagen . '" style="width:100%; max-width:280px; display: inline-block; margin-bottom: 10px;"><br>';
+                                                    }
+                                                    $bodypdf .= '   
+                                                </td>   
+                                            </tr>
+
+                                            <tr class="item">
+                                                <td>
+                                                    <b>DESCRIPCIÓN: </b>'.$_POST["descripcion"].'
+                                                </td>
+                                            </tr>
+
                                         ';
                                     }
-
                                     $bodypdf .= '<br><br>
                                     <tr class="top">
                                         <td colspan="2">
@@ -2383,7 +2404,23 @@ switch ($_GET["op"]) {
                                                     <img src="' . $firma . '" style="width:100%; max-width:150px;"><br>
                                                 </td>
                                             </tr>
-                                        ';
+                                            <tr class="item" style="display: flex; flex-wrap: wrap; justify-content: center;">
+                                            <td colspan="50" style="text-align: center;">
+                                            <b style="text-align:left;">PRESUPUESTO </b><br>';
+                                                foreach ($imagen_presupuesto as $imagen) {
+                                                    $bodypdf .= '
+                                                        <img src="../files/img_presupuesto/' . $imagen . '" style="width:100%; max-width:280px; display: inline-block; margin-bottom: 10px;"><br>';
+                                                }
+                                                $bodypdf .= '   
+                                            </td>   
+                                            </tr>
+
+                                            <tr class="item">
+                                                <td>
+                                                    <b>DESCRIPCIÓN: </b>'.$_POST["descripcion"].'
+                                                </td>
+                                            </tr>
+                                            ';
                                     }
 
                                     $body .= '<br><br>
@@ -2396,14 +2433,13 @@ switch ($_GET["op"]) {
                                                     </td>
                                                 </tr>
                                             </table>
-                                        </td>
                                     </tr>
                                 </table>
                             </div>
                         </body>
                     </html>
                 ';
-                echo $bodypdf;die;
+                //echo $bodypdf;die;
                 $guiaPDF = new mPDF('c');
                 //$guiaPDF->showImageErrors = true;
                 $guiaPDF->WriteHTML($bodypdf);
@@ -2792,7 +2828,9 @@ switch ($_GET["op"]) {
 
         case 'firmarsap':
             $firma = isset($_POST["firma"]) ? limpiarCadena($_POST["firma"]) : '';
-
+            $imagen_presupuesto[] = isset($_POST["file01"]) ? limpiarCadena($_POST["file01"]) : "";
+            $imagen_presupuesto[] = isset($_POST["file02"]) ? limpiarCadena($_POST["file02"]) : "";
+            $imagen_presupuesto[] = isset($_POST["file03"]) ? limpiarCadena($_POST["file03"]) : "";
             $data = json_encode($_POST);
             //$rspta = $servicio->finalizarActividad($data);
             $datosactividad = $servicio->Actividad($_POST['idactividad']);
@@ -3049,9 +3087,23 @@ switch ($_GET["op"]) {
                                             <img src="' . $firma . '" style="width:100%; max-width:150px;"><br>
                                         </td>
                                     </tr>
+                                    <tr class="item" style="display: flex; flex-wrap: wrap; justify-content: center;">
+                                    <td colspan="50" style="text-align: center;">
+                                    <b style="text-align:left;">PRESUPUESTO </b><br>';
+                                        foreach ($imagen_presupuesto as $imagen) {
+                                            $bodypdf .= '
+                                                <img src="../files/img_presupuesto/' . $imagen . '" style="width:100%; max-width:280px; display: inline-block; margin-bottom: 10px;"><br>';
+                                        }
+                                        $bodypdf .= '   
+                                    </td>   
+                                    </tr>
 
+                                    <tr class="item">
+                                    <td>
+                                        <b>DESCRIPCIÓN: </b>'.$_POST["descripcion"].'
+                                    </td>
+                                    </tr>
                                     <br><br>
-                                    
                                     <tr class="top">
                                         <td colspan="2">
                                             <table>
@@ -3324,7 +3376,23 @@ switch ($_GET["op"]) {
                                                     <img src="' . $firma . '" style="width:100%; max-width:150px;"><br>
                                                 </td>
                                             </tr>
-                                        ';
+                                            <tr class="item" style="display: flex; flex-wrap: wrap; justify-content: center;">
+                                                <td colspan="50" style="text-align: center;">
+                                                <b style="text-align:left;">PRESUPUESTO </b><br>';
+                                                    foreach ($imagen_presupuesto as $imagen) {
+                                                        $bodypdf .= '
+                                                            <img src="../files/img_presupuesto/' . $imagen . '" style="width:100%; max-width:280px; display: inline-block; margin-bottom: 10px;"><br>';
+                                                    }
+                                                    $bodypdf .= '   
+                                                </td>   
+                                            </tr>
+
+                                            <tr class="item">
+                                                <td>
+                                                    <b>DESCRIPCIÓN: </b>'.$_POST["descripcion"].'
+                                                </td>
+                                            </tr>   
+                                            ';
                                     }
 
                                     $body .= '<br><br>
@@ -3715,7 +3783,10 @@ switch ($_GET["op"]) {
             $rspvisita = '';
             //firma del cliente
             $firma = isset($_POST["firma"]) ? limpiarCadena($_POST["firma"]) : '';
-
+            $imagen_presupuesto[] = isset($_POST["file01"]) ? limpiarCadena($_POST["file01"]) : "";
+            $imagen_presupuesto[] = isset($_POST["file02"]) ? limpiarCadena($_POST["file02"]) : "";
+            $imagen_presupuesto[] = isset($_POST["file03"]) ? limpiarCadena($_POST["file03"]) : "";
+            
             if ($porfirmar == "true") {
                 $encoded_image = explode(",", $firma) [1];
                 $decoded_image = base64_decode($encoded_image);
