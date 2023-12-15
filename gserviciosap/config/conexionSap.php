@@ -375,7 +375,7 @@
 		            . 'Content-Type: ' . $files[$i]['type'] . $eol
 		            ;
 
-		        $data .= $eol;
+ 		        $data .= $eol;
 		        $data .= $content . $eol;
 		    }
 		    $data .= $delimiter . "--".$eol;

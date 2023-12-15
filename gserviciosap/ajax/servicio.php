@@ -1060,22 +1060,6 @@ switch ($_GET["op"]) {
                             <img src="../files/firma/' . $resp["filefir"] . '" style="width:100%; max-width:150px;"><br>
                         </td>
                     </tr>
-
-                    <tr class="item" style="display: flex; flex-wrap: wrap; justify-content: center;">
-                    <td colspan="50" style="text-align: center;">
-                    <b style="text-align:left;">PRESUPUESTO </b><br>';
-                        foreach ($imagen_presupuesto as $imagen) {
-                            $bodypdf .= '
-                                <img src="../files/img_presupuesto/' . $imagen . '" style="width:100%; max-width:280px; display: inline-block; margin-bottom: 10px;"><br>';
-                        }
-                        $bodypdf .= '   
-                    </td>   
-                    </tr>
-
-                    <tr class="item">
-                    <td>
-                        <b>DESCRIPCIÓN: </b>'.$_POST["descripcion"].'
-                    </td>
                     </tr>
                     <br>
                     <tr class="top">
@@ -3783,9 +3767,6 @@ switch ($_GET["op"]) {
             $rspvisita = '';
             //firma del cliente
             $firma = isset($_POST["firma"]) ? limpiarCadena($_POST["firma"]) : '';
-            $imagen_presupuesto[] = isset($_POST["file01"]) ? limpiarCadena($_POST["file01"]) : "";
-            $imagen_presupuesto[] = isset($_POST["file02"]) ? limpiarCadena($_POST["file02"]) : "";
-            $imagen_presupuesto[] = isset($_POST["file03"]) ? limpiarCadena($_POST["file03"]) : "";
             
             if ($porfirmar == "true") {
                 $encoded_image = explode(",", $firma) [1];
