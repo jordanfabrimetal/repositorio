@@ -752,7 +752,7 @@ switch ($_GET["op"]) {
             $Mailer->SMTPDebug = 0;
             $Mailer->Debugoutput = 'html';
             $Mailer->Host = "smtp.gmail.com";
-            $Mailer->Username = "emergencia@fabrimetal.cl";
+            
             $Mailer->Password = "fm818820";
             $Mailer->From = "emergencia@fabrimetal.cl";
             $Mailer->FromName = "Sistema guía de servicio -> Fabrimetal";
